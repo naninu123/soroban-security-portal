@@ -1,42 +1,88 @@
-![logo](./SFC36/readme-new.gif)
+# 🛡️ SaboLabs Soroban Security Portal
 
-[![CI](https://github.com/Inferara/soroban-security-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/Inferara/soroban-security-portal/actions/workflows/ci.yml)
-[![Deploy Stellar Security Portal](https://github.com/Inferara/soroban-security-portal/actions/workflows/cd-prod.yml/badge.svg)](https://github.com/Inferara/soroban-security-portal/actions/workflows/cd-prod.yml)
+> Fork & Security Enhancement of the [Stellar Security Portal](https://stellarsecurityportal.com) — **SaboLabs Security** focus on bug bounty writeups and real-world vulnerability analysis.
 
-## 🌃 Dock
+[![Soroban](https://img.shields.io/badge/Soroban-%239987E6.svg?logo=stellar&logoColor=white)](https://soroban.stellar.org)
+[![Security: Audit Ready](https://img.shields.io/badge/Security-Audit%20Ready-green.svg)](https://github.com/naninu123/soroban-security-portal/security)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-https://stellarsecurityportal.com
+---
 
-## 🚀 Features
+## 🎯 What's This?
 
-1. The largest database of known Stellar Soroban smart contracts security vulnerabilities ever found
-2. Vulenrabilities and security audit reports are organized and easy to access through filtered views
-3. Consolidated and observable information about companies, protocols, auditors, audit reports, and vulnerabilities
+This is **SaboLabs' fork** of the original [Inferara/Soroban Security Portal](https://github.com/Inferara/soroban-security-portal), with enhanced focus on:
 
-🗄️ Portal on [Tansu](https://app.tansu.dev/project/?name=securityportal)
+- 🐛 **Real-world bug bounty writeups** — sanitized PoC + findings from Immunefi/H1
+- 📊 **Vulnerability classification** — AST-based detection, common vulnerability patterns
+- 🔍 **Audit methodology** — step-by-step Soroban smart contract security review guide
+- 🛠️ **Tooling integration** — Foundry + Soroban CLI + custom audit scripts
 
-## 📦 Container Images
+---
 
-|Image|Stats|
-|--|--|
-|Helm| [![Docker Pulls](https://img.shields.io/docker/pulls/georgii4inferara/sorobansecurityportal.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/sorobansecurityportal) [![Docker Stars](https://img.shields.io/docker/stars/georgii4inferara/sorobansecurityportal.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/sorobansecurityportal) [![Docker Image Size](https://img.shields.io/docker/image-size/georgii4inferara/sorobansecurityportal.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/sorobansecurityportal) |
-|API| [![Docker Pulls](https://img.shields.io/docker/pulls/georgii4inferara/soroban-security-portal.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/soroban-security-portal) [![Docker Stars](https://img.shields.io/docker/stars/georgii4inferara/soroban-security-portal.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/soroban-security-portal) [![Docker Image Size](https://img.shields.io/docker/image-size/georgii4inferara/soroban-security-portal.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/soroban-security-portal) |
-|UI| [![Docker Pulls](https://img.shields.io/docker/pulls/georgii4inferara/soroban-security-portal-ui.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/soroban-security-portal-ui) [![Docker Stars](https://img.shields.io/docker/stars/georgii4inferara/soroban-security-portal-ui.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/soroban-security-portal-ui) [![Docker Image Size](https://img.shields.io/docker/image-size/georgii4inferara/soroban-security-portal-ui.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/georgii4inferara/soroban-security-portal-ui) |
+## 📚 Sections
 
-## 🌠 Appreciation
+| Section | Description | Status |
+|---------|-------------|--------|
+| [Vulnerability Database](./docs/vulnerabilities/) | Catalog of known Soroban vulnerabilities | ✅ Active |
+| [Bug Bounty Writeups](./writeups/) | Sanitized PoC from authorized audits | ✅ Active |
+| [Audit Checklist](./docs/audit-checklist/) | Step-by-step security review guide | 🔄 In Progress |
+| [Tooling](./scripts/) | CLI utilities for automated audit tasks | 🚧 WIP |
 
-This project was funded by the [Stellar Community Fund](https://communityfund.stellar.org/). 
+---
 
-The Stellar Security Portal' purpose is to provide a cohesive knowledge base for both current and new developers on [Stellar](https://stellar.org/). Here we will provide them with tools and information to start building with ease. 
+## 🚀 Quick Start
 
-By providing a unified knowledge base of common vulnerabilities and audit reports, developers can focus on building using Soroban safely.
+```bash
+# Clone the repo
+git clone https://github.com/naninu123/soroban-security-portal.git
+cd soroban-security-portal
 
-<img width="959" height="328" alt="image" src="https://github.com/user-attachments/assets/fef74946-be00-4321-aa50-6a8b248e4db6" />
+# View vulnerability catalog
+open ./docs/vulnerabilities/
 
-## 🤝 Contributing
+# Run audit helper scripts
+python scripts/audit_helper.py --help
+```
 
-Contributions are welcome!
+---
+
+## 🔍 Supported Vulnerability Types
+
+| Category | Pattern | Severity |
+|----------|---------|----------|
+| Storage | Incomplete cleanup on `store_set` | Critical |
+|Math | Integer overflow/underflow | High |
+| Access | Missing `auth.required()` guards | Critical |
+| Events | Unbounded event emission | Medium |
+| Time | Ledger time manipulation | High |
+| Token | Asset authorization bypass | Critical |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, Next.js, Tailwind CSS
+- **Backend:** Rust (Stellar Soroban SDK)
+- **Audit Scripts:** Python, Foundry
+- **Hosting:** Tansu, Cloudflare Pages
+
+---
+
+## 🤝 Acknowledgments
+
+This project builds on top of the [Stellar Security Portal](https://github.com/Inferara/soroban-security-portal) — funded by the [Stellar Community Fund](https://communityfund.stellar.org/).
+
+**SaboLabs Security** adds:
+- Real-world bug bounty analysis
+- Automated vulnerability scanner integrations
+- Expanded vulnerability database with PoC
+
+---
 
 ## 📄 License
 
-This project is licensed under # Apache License 2.0. See [LICENSE](./LICENSE) for details.
+Apache License 2.0 — see [LICENSE](LICENSE) for details.
+
+---
+
+*⚡ SaboLabs Security · Soroban Security Enhancement · 2026 ⚡*
